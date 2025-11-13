@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HISWACA-CONGO — Harmoniser les statistiques</title>
+
+    <!-- Google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN (pour prototypage rapide) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Optionnel : configuration Tailwind (couleurs personnalisées)
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0f766e", // teal-700-ish
+              accent: "#06b6d4", // cyan-400-ish
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+      /* petites personnalisations */
+      .gradient-hero {
+        background: linear-gradient(
+          180deg,
+          rgba(6, 182, 212, 0.06),
+          rgba(15, 118, 110, 0.02)
+        );
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+    <!-- NAV -->
+    <header class="bg-white shadow-sm sticky top-0 z-30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="#" class="flex items-center gap-3">
+            <div>
+              <img src="./logo.png" alt="Logo HISWACA-CONGO" width="100px" height="100px">
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="#about" class="hover:text-primary">À propos</a>
+            <a href="#missions" class="hover:text-primary">Missions</a>
+            <a href="#objectifs" class="hover:text-primary">Objectifs</a>
+            <a href="#impact" class="hover:text-primary">Impact</a>
+            <a
+              href="#contact"
+              class="text-white bg-primary px-4 py-2 rounded-md hover:opacity-95"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button id="mobileBtn" class="p-2 rounded-md hover:bg-gray-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 8h16M4 16h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile nav -->
+      <div id="mobileNav" class="md:hidden hidden border-t bg-white">
+        <div class="px-4 py-3 flex flex-col gap-2">
+          <a href="#about" class="py-2">À propos</a>
+          <a href="#missions" class="py-2">Missions</a>
+          <a href="#objectifs" class="py-2">Objectifs</a>
+          <a href="#impact" class="py-2">Impact</a>
+          <a href="#contact" class="py-2 font-semibold text-primary">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section
+        class="relative bg-cover bg-center bg-no-repeat text-white"
+        style="
+          background-image: url('tour_jumelle1.jpeg');
+        "
+      >
+        <!-- Dégradé vert -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-green-900/90 via-green-800/70 to-green-600/60"
+        ></div>
+
+        <!-- Contenu -->
+        <div
+          class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24"
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <!-- Texte -->
+            <div data-aos="fade-right" data-aos-duration="1000">
+              <h1
+                class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4"
+              >
+                Harmoniser les statistiques,
+                <span class="text-green-300">renforcer le développement</span>
+                du Congo
+              </h1>
+              <p class="mt-4 max-w-xl text-gray-100 leading-relaxed">
+                Le Projet d’Harmonisation et d’Amélioration des Statistiques au
+                Congo (<strong>HISWACA-CONGO</strong>) œuvre à bâtir un
+                écosystème statistique solide, moderne et fiable au service du
+                développement national.
+              </p>
+
+              <!-- Boutons -->
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="#missions"
+                  class="inline-flex items-center px-5 py-3 rounded-md bg-green-600 text-white font-medium shadow hover:bg-green-500 transition"
+                >
+                  En savoir plus
+                </a>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center px-5 py-3 rounded-md border border-green-400 text-green-300 font-medium hover:bg-green-700/30 transition"
+                >
+                  Nous contacter
+                </a>
+              </div>
+
+              <!-- Statistiques rapides -->
+              <div
+                class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
+                <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow">
+                  <div class="text-sm text-gray-600">Qualité</div>
+                  <div class="font-semibold text-gray-900">
+                    Données fiabilisées
+                  </div>
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow">
+                  <div class="text-sm text-gray-600">Coordination</div>
+                  <div class="font-semibold text-gray-900">
+                    Acteurs nationaux
+                  </div>
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow">
+                  <div class="text-sm text-gray-600">Innovation</div>
+                  <div class="font-semibold text-gray-900">
+                    Numérique & formation
+                  </div>
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow">
+                  <div class="text-sm text-gray-600">Décision</div>
+                  <div class="font-semibold text-gray-900">
+                    Basée sur des données
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Illustration -->
+            <div
+              data-aos="zoom-in"
+              data-aos-duration="800"
+              class="flex items-center justify-center"
+            >
+              <div class="w-full max-w-md">
+                <svg
+                  viewBox="0 0 800 520"
+                  class="w-full"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Illustration données"
+                >
+                  <defs>
+                    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                      <stop
+                        offset="0"
+                        stop-color="#34d399"
+                        stop-opacity="0.3"
+                      />
+                      <stop
+                        offset="1"
+                        stop-color="#059669"
+                        stop-opacity="0.15"
+                      />
+                    </linearGradient>
+                  </defs>
+                  <rect rx="20" width="800" height="520" fill="url(#g1)" />
+                  <g transform="translate(60,80)" fill="#10b981" opacity="0.95">
+                    <rect x="0" y="200" width="40" height="160" rx="6" />
+                    <rect x="60" y="160" width="40" height="200" rx="6" />
+                    <rect x="120" y="120" width="40" height="240" rx="6" />
+                    <rect x="180" y="80" width="40" height="280" rx="6" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="700"
+            class="lg:col-span-2"
+          >
+            <h2 class="text-2xl font-bold">À propos du projet</h2>
+            <p class="mt-4 text-gray-600">
+              Le Projet d’Harmonisation et d’Amélioration des Statistiques au
+              Congo (HISWACA-CONGO) œuvre à bâtir un écosystème statistique
+              solide, moderne et fiable pour mieux orienter les politiques
+              publiques et construire un avenir durable.
+            </p>
+
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              <div
+                class="flex gap-3 items-start bg-white p-4 rounded-lg shadow-sm"
+              >
+                <div class="flex-shrink-0 mt-1">
+                  <!-- Check icon -->
+                  <svg
+                    class="h-6 w-6 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-semibold">Production & qualité</div>
+                  <p class="text-sm text-gray-500">
+                    Renforcer la production et la qualité des données
+                    statistiques.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex gap-3 items-start bg-white p-4 rounded-lg shadow-sm"
+              >
+                <div class="flex-shrink-0 mt-1">
+                  <svg
+                    class="h-6 w-6 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-semibold">Coordination</div>
+                  <p class="text-sm text-gray-500">
+                    Améliorer la coordination entre les acteurs du système
+                    national de la statistique.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex gap-3 items-start bg-white p-4 rounded-lg shadow-sm"
+              >
+                <div class="flex-shrink-0 mt-1">
+                  <svg
+                    class="h-6 w-6 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-semibold">Innovation numérique</div>
+                  <p class="text-sm text-gray-500">
+                    Promouvoir l’innovation numérique et la formation des
+                    acteurs.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex gap-3 items-start bg-white p-4 rounded-lg shadow-sm"
+              >
+                <div class="flex-shrink-0 mt-1">
+                  <svg
+                    class="h-6 w-6 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-semibold">Planification</div>
+                  <p class="text-sm text-gray-500">
+                    Soutenir la planification et la prise de décision basée sur
+                    des données fiables.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quote / value card -->
+          <aside
+            data-aos="fade-left"
+            data-aos-duration="700"
+            class="bg-primary/5 border border-primary/10 p-6 rounded-lg"
+          >
+            <h3 class="text-lg font-semibold">Notre boussole</h3>
+            <p class="mt-3 text-gray-700">
+              « Chez HISWACA-CONGO, chaque donnée de qualité est une boussole
+              pour mieux orienter les politiques publiques et construire un
+              avenir durable. »
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ===== Section Parallax ===== -->
+      <section
+        class="relative bg-fixed bg-center bg-cover bg-no-repeat py-32 text-white"
+        style="
+          background-image: url('./tour_jumelle.jpeg');
+        "
+      >
+        <!-- Superposition dégradée verte -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-green-900/90 via-green-800/70 to-green-600/70"
+        ></div>
+
+        <!-- Contenu -->
+        <div
+          class="relative z-10 max-w-4xl mx-auto px-6 text-center"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+            Construire un avenir fondé sur les données
+          </h2>
+          <p class="text-lg md:text-xl text-gray-100 leading-relaxed">
+            Grâce au projet <strong>HISWACA-CONGO</strong>, les données
+            deviennent un véritable moteur de croissance. Nous harmonisons,
+            modernisons et renforçons la capacité du Congo à produire des
+            statistiques fiables pour un développement durable et inclusif.
+          </p>
+        </div>
+      </section>
+
+      <!-- MISSIONS -->
+      <section id="missions" class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="text-center mb-8"
+            data-aos="fade-up"
+            data-aos-duration="600"
+          >
+            <h2 class="text-2xl font-bold">Pourquoi HISWACA-CONGO ? </h2>
+            <p class="mt-2 text-gray-600 max-w-2xl mx-auto">
+              Quatre axes stratégiques pour transformer le paysage statistique
+              national.
+            </p>
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <!-- Card 1 -->
+            <div
+              data-aos="flip-left"
+              data-aos-duration="700"
+              class="bg-gradient-to-tr from-white to-primary/5 border p-6 rounded-xl shadow-sm"
+            >
+              <div class="flex items-center gap-4">
+                <div class="p-3 rounded-lg bg-primary/10">
+                  <!-- icon -->
+                  <svg
+                    class="h-7 w-7 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                  >
+                    <path
+                      d="M3 3v18h18"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M7 7h10v10H7z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Renforcer la production</h4>
+                  <p class="text-sm text-gray-500">
+                    Améliorer la collecte et la qualité des statistiques
+                    nationales.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              data-aos="flip-left"
+              data-aos-duration="800"
+              class="bg-gradient-to-tr from-white to-primary/5 border p-6 rounded-xl shadow-sm"
+            >
+              <div class="flex items-center gap-4">
+                <div class="p-3 rounded-lg bg-primary/10">
+                  <svg
+                    class="h-7 w-7 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                  >
+                    <path
+                      d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Renforcer la coordination</h4>
+                  <p class="text-sm text-gray-500">
+                    Favoriser le travail collectif entre institutions et
+                    partenaires.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              data-aos="flip-left"
+              data-aos-duration="900"
+              class="bg-gradient-to-tr from-white to-primary/5 border p-6 rounded-xl shadow-sm"
+            >
+              <div class="flex items-center gap-4">
+                <div class="p-3 rounded-lg bg-primary/10">
+                  <svg
+                    class="h-7 w-7 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                  >
+                    <path
+                      d="M12 2v20"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2 12h20"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Promouvoir l'innovation</h4>
+                  <p class="text-sm text-gray-500">
+                    Numérisation, outils analytiques et formation continue.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              data-aos="flip-left"
+              data-aos-duration="1000"
+              class="bg-gradient-to-tr from-white to-primary/5 border p-6 rounded-xl shadow-sm"
+            >
+              <div class="flex items-center gap-4">
+                <div class="p-3 rounded-lg bg-primary/10">
+                  <svg
+                    class="h-7 w-7 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                  >
+                    <path
+                      d="M3 21h18"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M4 7h16"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Soutenir la décision</h4>
+                  <p class="text-sm text-gray-500">
+                    Des données fiables pour des politiques publiques efficaces.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OBJECTIFS -->
+      <section id="objectifs" class="py-12 bg-yellow-100 ">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="text-center mb-8"
+            data-aos="fade-up"
+            data-aos-duration="600"
+          >
+            <h2 class="text-2xl font-bold">Objectif général</h2>
+            <p class="mt-2 text-gray-600">
+              Harmoniser et améliorer les statistiques au Congo pour accompagner
+              les politiques publiques.
+            </p>
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-3">
+            <div
+              data-aos="fade-right"
+              data-aos-duration="700"
+              class="bg-white p-6 rounded-lg shadow-sm"
+            >
+              <h3 class="font-semibold">Harmonisation</h3>
+              <p class="text-sm text-gray-500 mt-2">
+                Harmoniser et améliorer les statistiques au Congo.
+              </p>
+            </div>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="800"
+              class="bg-white p-6 rounded-lg shadow-sm"
+            >
+              <h3 class="font-semibold">Gouvernance</h3>
+              <p class="text-sm text-gray-500 mt-2">
+                Renforcer la gouvernance statistique et la qualité des données.
+              </p>
+            </div>
+            <div
+              data-aos="fade-left"
+              data-aos-duration="900"
+              class="bg-white p-6 rounded-lg shadow-sm"
+            >
+              <h3 class="font-semibold">Normes internationales</h3>
+              <p class="text-sm text-gray-500 mt-2">
+                Intégrer les normes internationales pour mieux accompagner les
+                politiques publiques.
+              </p>
+            </div>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="700"
+              class="bg-white p-6 rounded-lg shadow-sm"
+            >
+              <h4 class="font-semibold">Décisions publiques meilleures</h4>
+              <p class="text-sm text-gray-500 mt-2">
+                Des décisions plus ciblées grâce à des informations fiables et
+                opportunes.
+              </p>
+            </div>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="800"
+              class="bg-white p-6 rounded-lg shadow-sm"
+            >
+              <h4 class="font-semibold">Croissance durable</h4>
+              <p class="text-sm text-gray-500 mt-2">
+                Soutenir la planification et les politiques pour un
+                développement durable.
+              </p>
+            </div>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="900"
+              class="bg-white p-6 rounded-lg shadow-sm"
+            >
+              <h4 class="font-semibold">Renforcement des capacités</h4>
+              <p class="text-sm text-gray-500 mt-2">
+                Programmes de formation et transfert de compétences aux acteurs
+                locaux.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA (Appel à l’action) -->
+<section class="py-20 bg-gray-50">
+  <div
+    class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+  >
+    <!-- Image à gauche -->
+    <div
+      class="flex justify-center"
+      data-aos="fade-right"
+      data-aos-duration="700"
+    >
+      <img
+        src="./illustration.jpg"
+        alt="Collaboration HISWACA-CONGO"
+        class="rounded-2xl shadow-lg w-full max-w-md h-[450px] object-cover"
+      />
+    </div>
+
+    <!-- Contenu à droite -->
+    <div
+      class="text-center md:text-left"
+      data-aos="fade-left"
+      data-aos-duration="700"
+    >
+      <h3 class="text-2xl font-extrabold text-gray-900">
+        Participez à la transformation
+      </h3>
+      <p class="mt-3 text-gray-600">
+        Collaborez, financez ou formez avec <span class="font-semibold text-green-700">HISWACA-CONGO</span> pour renforcer
+        l'écosystème statistique national et promouvoir un développement fondé
+        sur des données fiables.
+      </p>
+
+      <div class="mt-6 flex flex-wrap md:justify-start justify-center gap-4">
+        <a
+          href="#contact"
+          class="px-6 py-3 rounded-md bg-green-600 text-white font-medium shadow hover:bg-green-500 transition"
+        >
+          Nous contacter
+        </a>
+        <a
+          href="#"
+          class="px-6 py-3 rounded-md border border-green-600 text-green-700 font-medium hover:bg-green-50 transition"
+        >
+          Télécharger la brochure
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <!-- 🌟 Section Actualités -->
+<section id="actualites" class="py-20 bg-gray-50 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-gray-900 mb-3">
+        Nos Actualités
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Restez informés sur nos dernières activités, projets et événements à travers le pays.
+      </p>
+    </div>
+
+    <!-- Grille des articles -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Article 1 -->
+      <article
+        class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+          alt="Formation HISWACA"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-900">
+            Lancement de la formation sur la gestion des statistiques
+          </h3>
+          <p class="mt-2 text-gray-600 text-sm">
+            Une session de renforcement de capacités pour les agents de terrain, visant à harmoniser les pratiques statistiques.
+          </p>
+          <a
+            href="#"
+            class="mt-3 inline-block text-green-600 font-medium hover:underline"
+            >Lire plus →</a
+          >
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article
+        class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=800&q=80"
+          alt="Atelier de travail"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-900">
+            Atelier de concertation des partenaires
+          </h3>
+          <p class="mt-2 text-gray-600 text-sm">
+            Les institutions partenaires ont échangé sur les outils de collecte et les méthodes d’harmonisation.
+          </p>
+          <a
+            href="#"
+            class="mt-3 inline-block text-green-600 font-medium hover:underline"
+            >Lire plus →</a
+          >
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article
+        class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+          alt="Conférence sur les données"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-900">
+            Conférence nationale sur les données ouvertes
+          </h3>
+          <p class="mt-2 text-gray-600 text-sm">
+            HISWACA-CONGO a présenté ses avancées dans la digitalisation des statistiques nationales.
+          </p>
+          <a
+            href="#"
+            class="mt-3 inline-block text-green-600 font-medium hover:underline"
+            >Lire plus →</a
+          >
+        </div>
+      </article>
+    </div>
+
+    <!-- Bouton voir plus -->
+    <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="400">
+      <a
+        href="#"
+        class="inline-block px-6 py-3 bg-green-600 text-white rounded-md font-medium hover:bg-green-500 transition"
+      >
+        Voir toutes les actualités
+      </a>
+    </div>
+  </div>
+
+  <!-- Effet de fond décoratif -->
+  <div class="absolute top-0 left-0 w-40 h-40 bg-green-100 rounded-full blur-3xl opacity-60 -z-10"></div>
+  <div class="absolute bottom-0 right-0 w-64 h-64 bg-green-200 rounded-full blur-3xl opacity-60 -z-10"></div>
+</section>
+
+
+      <!-- CONTACT / FOOTER -->
+<footer id="contact" class="bg-green-700 text-white border-t border-green-600">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Colonne 1 : Présentation -->
+      <div>
+       <img src="./logo.png" alt="Logo HISWACA-CONGO" height="200px" width="200px" >
+        <p class="text-sm text-white mt-2">
+          Bâtir un écosystème statistique solide, moderne et fiable.
+        </p>
+        <p class="text-sm text-white mt-4">
+          Adresse : Brazzaville, Congo (exemple)
+        </p>
+        <p class="text-sm text-white">
+          Email : contact@hiswaca-congo.org
+        </p>
+        <p class="text-sm text-white">Téléphone : +242 000 000</p>
+      </div>
+
+      <!-- Colonne 2 : Liens -->
+      <div>
+        <h5 class="font-semibold text-white">Liens</h5>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>
+            <a href="#about" class="hover:text-green-300">À propos</a>
+          </li>
+          <li>
+            <a href="#missions" class="hover:text-green-300">Missions</a>
+          </li>
+          <li>
+            <a href="#objectifs" class="hover:text-green-300">Objectifs</a>
+          </li>
+          <li>
+            <a href="#actualites" class="hover:text-green-300">Actualités</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Colonne 3 : Réseaux sociaux -->
+      <div>
+        <h5 class="font-semibold text-white">Nos Réseaux Sociaux</h5>
+        <p class="text-sm text-white mt-2 mb-3">
+          Suivez-nous pour rester informé de nos actions.
+        </p>
+        <div class="flex gap-4">
+          <a href="#" aria-label="Facebook" class="hover:text-green-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5a3.5 3.5 0 0 1 3.7-3.9c1.1 0 2.2.2 2.2.2v2.4H15c-1.2 0-1.6.8-1.6 1.5V12H16l-.5 3h-2v7A10 10 0 0 0 22 12z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter" class="hover:text-green-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M19.46 6.03a6.6 6.6 0 0 1-1.89.52A3.3 3.3 0 0 0 19.18 4a6.57 6.57 0 0 1-2.08.8 3.28 3.28 0 0 0-5.59 2.99A9.32 9.32 0 0 1 3.1 4.88a3.28 3.28 0 0 0 1.02 4.38 3.24 3.24 0 0 1-1.49-.41v.04a3.28 3.28 0 0 0 2.63 3.22 3.28 3.28 0 0 1-1.48.06 3.29 3.29 0 0 0 3.07 2.28A6.59 6.59 0 0 1 2 18.57a9.29 9.29 0 0 0 5.03 1.47c6.03 0 9.33-5 9.33-9.33v-.43A6.68 6.68 0 0 0 21 7.53a6.54 6.54 0 0 1-1.54.42z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="hover:text-green-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M19 0h-14a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5v-14a5 5 0 0 0-5-5zm-11.4 20h-2.8v-9h2.8v9zm-1.4-10.3a1.63 1.63 0 1 1 0-3.26 1.63 1.63 0 0 1 0 3.26zm13.8 10.3h-2.8v-4.9c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7v5h-2.8v-9h2.7v1.2h.04a3 3 0 0 1 2.7-1.5c2.9 0 3.5 1.9 3.5 4.3v5z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="hover:text-green-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M19.615 3.184c-1.4-.09-8.83-.09-10.23 0-1.68.1-3.16.83-3.16 3.15v11.33c0 2.32 1.48 3.05 3.16 3.15 1.4.09 8.83.09 10.23 0 1.68-.1 3.16-.83 3.16-3.15v-11.33c0-2.32-1.48-3.05-3.16-3.15zm-8.62 12.66v-7.66l6.14 3.83-6.14 3.83z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Colonne 4 : Formulaire de contact -->
+      <div>
+        <h5 class="font-semibold text-white">Contactez-nous</h5>
+        <form
+          class="mt-3 space-y-3"
+          action="https://formspree.io/f/xeovoryo"
+          method="POST"
+        >
+          <div>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              placeholder="Nom"
+              class="w-full rounded-md border border-gray-300 bg-white/10 text-white placeholder-white/70 shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+            />
+          </div>
+          <div>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="Email"
+              class="w-full rounded-md border border-gray-300 bg-white/10 text-white placeholder-white/70 shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+            />
+          </div>
+          <div>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              required
+              placeholder="Message"
+              class="w-full rounded-md border border-gray-300 bg-white/10 text-white placeholder-white/70 shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+            ></textarea>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="w-full px-4 py-2 rounded-md bg-green-500 text-white font-medium hover:bg-green-400 transition"
+            >
+              Envoyer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-10 text-center text-xs text-white/80 border-t border-white/20 pt-6">
+      © <span id="year"></span> HISWACA-CONGO — Tous droits réservés.
+    </div>
+  </div>
+</footer>
+    </main>
+
+    <!-- AOS script -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+        offset: 100,
+        duration: 600,
+      });
+
+      // mobile nav toggle
+      document
+        .getElementById("mobileBtn")
+        .addEventListener("click", function () {
+          const nav = document.getElementById("mobileNav");
+          nav.classList.toggle("hidden");
+        });
+
+      // footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
