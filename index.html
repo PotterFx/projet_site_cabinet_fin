@@ -19,8 +19,8 @@
         theme: {
           extend: {
             colors: {
-              primary: "#0f766e", // teal-700-ish
-              accent: "#06b6d4", // cyan-400-ish
+              primary: "#C69214", // Or Prestige
+              accent: "#FED272", // Beige d'accompagnement
             },
             fontFamily: {
               sans: ["Inter", "ui-sans-serif", "system-ui"],
@@ -33,20 +33,50 @@
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <style>
-      /* petites personnalisations */
-      .gradient-hero {
-        background: linear-gradient(
-          180deg,
-          rgba(6, 182, 212, 0.06),
-          rgba(15, 118, 110, 0.02)
-        );
+      /* Charte HISWACA : noir onyx, or prestige et beige */
+      :root {
+        --onyx: #111111;
+        --gold: #c69214;
+        --gold-deep: #9a7010;
+        --beige: #fed272;
+        --ivory: #fffaf0;
       }
+      html { scroll-behavior: smooth; }
+      body { background: var(--ivory); color: var(--onyx); }
+      h1, h2, h3, h4, h5 { letter-spacing: -0.025em; }
+      header { border-bottom: 1px solid rgba(198, 146, 20, .22); }
+      header nav a { position: relative; font-weight: 600; color: #292929; }
+      header nav a::after {
+        content: ""; position: absolute; right: 0; bottom: -7px; left: 0; height: 2px;
+        background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+      }
+      header nav a:hover::after { transform: scaleX(1); }
+      .gradient-hero { background: linear-gradient(180deg, rgba(198,146,20,.08), rgba(17,17,17,.02)); }
+      .bg-primary\/5 { background-color: rgba(198, 146, 20, .06) !important; }
+      .bg-primary\/10 { background-color: rgba(198, 146, 20, .12) !important; }
+      .border-primary\/10 { border-color: rgba(198, 146, 20, .24) !important; }
+      .text-primary { color: var(--gold) !important; }
+      #about > div > div > div.bg-white, #objectifs .bg-white,
+      #missions [class*="bg-gradient"], #actualites article {
+        border: 1px solid rgba(198, 146, 20, .16);
+        box-shadow: 0 12px 28px rgba(17, 17, 17, .06);
+        transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+      }
+      #about > div > div > div.bg-white:hover, #objectifs .bg-white:hover,
+      #missions [class*="bg-gradient"]:hover, #actualites article:hover {
+        border-color: rgba(198, 146, 20, .55); box-shadow: 0 18px 36px rgba(17, 17, 17, .12); transform: translateY(-4px);
+      }
+      #objectifs { background: #f7eedc !important; }
+      #actualites, main > section.py-20.bg-gray-50 { background: var(--ivory) !important; }
+      footer { background-color: var(--onyx) !important; border-top-color: var(--gold) !important; }
+      footer h5 { color: var(--beige) !important; }
+      footer input:focus, footer textarea:focus { --tw-ring-color: var(--beige) !important; border-color: var(--beige) !important; }
     </style>
   </head>
   <body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
     <!-- NAV -->
     <header class="bg-white shadow-sm sticky top-0 z-30">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <a href="#" class="flex items-center gap-3">
             <div>
@@ -113,7 +143,7 @@
       >
         <!-- Dégradé vert -->
         <div
-          class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/70 to-blue-600/60"
+          class="absolute inset-0 bg-gradient-to-r from-black/95 via-[#111111]/85 to-[#9a7010]/65"
         ></div>
 
         <!-- Contenu -->
@@ -127,7 +157,7 @@
                 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4"
               >
                 Construire des stratégies financières,
-                <span class="text-blue-300">accélérer la croissance</span>
+                <span class="text-[#FED272]">accélérer la croissance</span>
                 des entreprises
               </h1>
 
@@ -144,13 +174,13 @@
               <div class="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#missions"
-                  class="inline-flex items-center px-5 py-3 rounded-md bg-blue-600 text-white font-medium shadow hover:bg-blue-500 transition"
+                  class="inline-flex items-center px-5 py-3 rounded-md bg-primary text-white font-medium shadow hover:bg-[#9a7010] transition"
                 >
                   En savoir plus
                 </a>
                 <a
                   href="#contact"
-                  class="inline-flex items-center px-5 py-3 rounded-md border border-white-400 text-white font-medium hover:bg-blue-700/30 transition"
+                  class="inline-flex items-center px-5 py-3 rounded-md border border-[#FED272]/80 text-white font-medium hover:bg-[#FED272]/15 transition"
                 >
                   Nous contacter
                 </a>
@@ -207,18 +237,18 @@
                     <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
                       <stop
                         offset="0"
-                        stop-color="#34d399"
+                        stop-color="#FED272"
                         stop-opacity="0.3"
                       />
                       <stop
                         offset="1"
-                        stop-color="#059669"
+                        stop-color="#C69214"
                         stop-opacity="0.15"
                       />
                     </linearGradient>
                   </defs>
                   <rect rx="20" width="800" height="520" fill="url(#g1)" />
-                  <g transform="translate(60,80)" fill="#10b981" opacity="0.95">
+                  <g transform="translate(60,80)" fill="#C69214" opacity="0.95">
                     <rect x="0" y="200" width="40" height="160" rx="6" />
                     <rect x="60" y="160" width="40" height="200" rx="6" />
                     <rect x="120" y="120" width="40" height="240" rx="6" />
@@ -232,7 +262,7 @@
       </section>
 
       <!-- ABOUT -->
-      <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 ">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           <div
             data-aos="fade-right"
@@ -398,7 +428,7 @@
       >
         <!-- Superposition dégradée verte -->
         <div
-          class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/70 to-blue-600/70"
+          class="absolute inset-0 bg-gradient-to-r from-black/95 via-[#111111]/85 to-[#9a7010]/65"
         ></div>
 
         <!-- Contenu -->
@@ -409,7 +439,7 @@
 >
   <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
     Donnons une nouvelle dimension à
-    <span class="text-blue-300">vos ambitions financières</span>
+    <span class="text-[#FED272]">vos ambitions financières</span>
   </h2>
 
   <p class="text-lg md:text-xl text-gray-100 leading-relaxed">
@@ -846,7 +876,7 @@
 <p class="mt-3 text-gray-600">
   Échangez avec notre équipe pour bénéficier d’un accompagnement adapté à vos
   enjeux financiers, qu’il s’agisse de
-  <span class="font-semibold text-blue-700">mobiliser des capitaux</span>,
+  <span class="font-semibold text-primary">mobiliser des capitaux</span>,
   de restructurer votre situation financière, de définir une stratégie
   financière ou de valoriser votre entreprise.
 </p>
@@ -856,13 +886,13 @@
             >
               <a
                 href="#contact"
-                class="px-6 py-3 rounded-md bg-blue-600 text-white font-medium shadow hover:bg-blue-500 transition"
+                class="px-6 py-3 rounded-md bg-primary text-white font-medium shadow hover:bg-[#9a7010] transition"
               >
                 Nous contacter
               </a>
               <a
                 href="#"
-                class="px-6 py-3 rounded-md border border-blue-600 text-blue-700 font-medium hover:bg-blue-50 transition"
+                class="px-6 py-3 rounded-md border border-primary text-primary font-medium hover:bg-[#fed272]/20 transition"
               >
                 Télécharger la brochure
               </a>
@@ -910,7 +940,7 @@
                 </p>
                 <a
                   href="#"
-                  class="mt-3 inline-block text-blue-600 font-medium hover:underline"
+                  class="mt-3 inline-block text-primary font-medium hover:underline"
                   >Lire plus →</a
                 >
               </div>
@@ -937,7 +967,7 @@
                 </p>
                 <a
                   href="#"
-                  class="mt-3 inline-block text-blue-600 font-medium hover:underline"
+                  class="mt-3 inline-block text-primary font-medium hover:underline"
                   >Lire plus →</a
                 >
               </div>
@@ -964,7 +994,7 @@
                 </p>
                 <a
                   href="#"
-                  class="mt-3 inline-block text-blue-600 font-medium hover:underline"
+                  class="mt-3 inline-block text-primary font-medium hover:underline"
                   >Lire plus →</a
                 >
               </div>
@@ -979,7 +1009,7 @@
           >
             <a
               href="#"
-              class="inline-block px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-500 transition"
+              class="inline-block px-6 py-3 bg-primary text-white rounded-md font-medium hover:bg-[#9a7010] transition"
             >
               Voir toutes les actualités
             </a>
@@ -988,17 +1018,17 @@
 
         <!-- Effet de fond décoratif -->
         <div
-          class="absolute top-0 left-0 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-60 -z-10"
+          class="absolute top-0 left-0 w-40 h-40 bg-[#fed272] rounded-full blur-3xl opacity-40 -z-10"
         ></div>
         <div
-          class="absolute bottom-0 right-0 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-60 -z-10"
+          class="absolute bottom-0 right-0 w-64 h-64 bg-[#c69214] rounded-full blur-3xl opacity-25 -z-10"
         ></div>
       </section>
 
       <!-- CONTACT / FOOTER -->
       <footer
         id="contact"
-        class="bg-blue-700 text-white border-t border-blue-600"
+        class="bg-[#111111] text-white border-t border-primary"
       >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -1030,16 +1060,16 @@
               <h5 class="font-semibold text-white">Liens</h5>
               <ul class="mt-3 space-y-2 text-sm">
                 <li>
-                  <a href="#about" class="hover:text-blue-300">À propos</a>
+                  <a href="#about" class="hover:text-[#FED272]">À propos</a>
                 </li>
                 <li>
-                  <a href="#missions" class="hover:text-blue-300">Missions</a>
+                  <a href="#missions" class="hover:text-[#FED272]">Missions</a>
                 </li>
                 <li>
-                  <a href="#objectifs" class="hover:text-blue-300">Objectifs</a>
+                  <a href="#objectifs" class="hover:text-[#FED272]">Objectifs</a>
                 </li>
                 <li>
-                  <a href="#actualites" class="hover:text-blue-300"
+                  <a href="#actualites" class="hover:text-[#FED272]"
                     >Actualités</a
                   >
                 </li>
@@ -1053,7 +1083,7 @@
                 Suivez-nous pour rester informé de nos actions.
               </p>
               <div class="flex gap-4">
-                <a href="#" aria-label="Facebook" class="hover:text-blue-300">
+                <a href="#" aria-label="Facebook" class="hover:text-[#FED272]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -1065,7 +1095,7 @@
                     />
                   </svg>
                 </a>
-                <a href="#" aria-label="Twitter" class="hover:text-blue-300">
+                <a href="#" aria-label="Twitter" class="hover:text-[#FED272]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -1077,7 +1107,7 @@
                     />
                   </svg>
                 </a>
-                <a href="#" aria-label="LinkedIn" class="hover:text-blue-300">
+                <a href="#" aria-label="LinkedIn" class="hover:text-[#FED272]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -1089,7 +1119,7 @@
                     />
                   </svg>
                 </a>
-                <a href="#" aria-label="YouTube" class="hover:text-blue-300">
+                <a href="#" aria-label="YouTube" class="hover:text-[#FED272]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -1119,7 +1149,7 @@
                     type="text"
                     required
                     placeholder="Nom"
-                    class="w-full rounded-md border border-gray-300 bg-white/10 text-white placeholder-white/70 shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    class="w-full rounded-md border border-[#FED272]/35 bg-white/10 text-white placeholder-white/70 shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-[#FED272]"
                   />
                 </div>
                 <div>
@@ -1129,7 +1159,7 @@
                     type="email"
                     required
                     placeholder="Email"
-                    class="w-full rounded-md border border-gray-300 bg-white/10 text-white placeholder-white/70 shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    class="w-full rounded-md border border-[#FED272]/35 bg-white/10 text-white placeholder-white/70 shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-[#FED272]"
                   />
                 </div>
                 <div>
@@ -1139,13 +1169,13 @@
                     rows="3"
                     required
                     placeholder="Message"
-                    class="w-full rounded-md border border-gray-300 bg-white/10 text-white placeholder-white/70 shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    class="w-full rounded-md border border-[#FED272]/35 bg-white/10 text-white placeholder-white/70 shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-[#FED272]"
                   ></textarea>
                 </div>
                 <div>
                   <button
                     type="submit"
-                    class="w-full px-4 py-2 rounded-md bg-[#1D083B] text-white font-medium hover:bg-blue-400 transition"
+                    class="w-full px-4 py-2 rounded-md bg-primary text-white font-medium hover:bg-[#FED272] hover:text-[#111111] transition"
                   >
                     Envoyer
                   </button>
